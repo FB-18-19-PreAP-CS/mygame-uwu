@@ -1,7 +1,8 @@
-import pygame
+import pygame, time
 
-pygame.init()
 pygame.mixer.init()
-sounda = pygame.mixer.Sound("8-BIT nursery rhymes - twinkle twinkle little star.wav")
+pygame.init()
+song = pygame.mixer.Sound("8bit_twinkle_star.wav")
 
-sounda.play()
+song.play()
+time.sleep(30) #sleep allows the song to play
