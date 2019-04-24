@@ -1,4 +1,4 @@
-import pygame, time
+import pygame
 
 pygame.mixer.init()
 pygame.init()
@@ -9,6 +9,3 @@ song = pygame.mixer.Sound("./sounds/8bit_twinkle_star.wav")
 while True:
     song.play()
     pygame.display.quit()
-# time.sleep(5)
-
-# time.sleep(30) #sleep allows the song to play
