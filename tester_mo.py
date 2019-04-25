@@ -16,25 +16,33 @@ class Button(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load("blue_button-1-1.png.png")
 
-def four_columns():
 
-    # LOCATION OF COLUMN ONE
-    x1 = 400
-    y1 = 50
 
-    #LOCATION OF COLUMN TWO
-    x2 = 450
-    y2 = 50
+# LOCATION OF COLUMN ONE
+x1 = 400
+y1 = 50
 
-    #LOCATION OF COLUMN THREE
-    x3 = 500
-    y3 = 50
+#LOCATION OF COLUMN TWO
+x2 = 450
+y2 = 50
 
-    #LOCATION OF COLUMN FOUR 
-    x4 = 550
-    y4 = 50
+#LOCATION OF COLUMN THREE
+x3 = 500
+y3 = 50
 
-    #CREATES INITIAL COLUMNS OF FALLING BUTTONS
+#LOCATION OF COLUMN FOUR 
+x4 = 550
+y4 = 50
+
+#CREATES INITIAL COLUMNS OF FALLING BUTTONS
+
+    
+
+while not done:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+    screen.blit(background_image,back_pos )
     button1 = Button()
     button2 = Button()
     button3 = Button()
@@ -55,13 +63,6 @@ def four_columns():
     y4 = y4+ C_SPEED
     if y4 > HEIGHT:
         y4 = -1
-
-while not done:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-    screen.blit(background_image,back_pos )
-    four_columns()
    
     
 
