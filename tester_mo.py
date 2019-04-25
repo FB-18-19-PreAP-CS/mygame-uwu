@@ -31,30 +31,37 @@ class Button(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load("blue_button-1-1.png.png")
-    #self.image = Button.image
-#make sprite class, import image
-while not done:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-    screen.blit(background_image,back_pos )
+
+def four_columns():
     button1 = Button()
     button2 = Button()
     button3 = Button()
     button4 = Button()
     screen.blit(button1.image,(x1,y1))
+    y1 = y1 + C_SPEED
+    if y1 > HEIGHT:
+        y1 = -1
     screen.blit(button1.image,(x2,y2))
+    y2 = y2 + C_SPEED
+    if y2 > HEIGHT:
+        y2 = -1
     screen.blit(button1.image,(x3,y3))
+    y3 = y3 + C_SPEED
+    if y3 > HEIGHT:
+        y3 = -1
     screen.blit(button1.image,(x4,y4))
-   
-    # pygame.draw.circle(screen,(0,0,255),(x1,y1),10)
-    # pygame.draw.circle(screen,(0,0,255),(x2,y2),10)
+    y4 = y4+ C_SPEED
+    if y4 > HEIGHT:
+        y4 = -1
 
-    # pygame.draw.circle(screen,(0,0,255),(x3,y3),10)
-    # pygame.draw.circle(screen,(0,0,255),(x4,y4),10)
-    # y1 = y1 + C_SPEED
-    # if y1 > HEIGHT:
-    #     y1 = -1
+while not done:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+    screen.blit(background_image,back_pos )
+    four_columns()
+   
+    
 
     
     
