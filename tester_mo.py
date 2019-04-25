@@ -27,18 +27,34 @@ y3 = 50
 x4 = 550
 y4 = 50
 
+class Button(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load("blue_button-1-1.png.png")
+    #self.image = Button.image
 #make sprite class, import image
 while not done:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
     screen.blit(background_image,back_pos )
-    
-    pygame.draw.circle(screen,(0,0,255),(x1,y1),10)
-    pygame.draw.circle(screen,(0,0,255),(x2,y2),10)
+    button1 = Button()
+    button2 = Button()
+    button3 = Button()
+    button4 = Button()
+    screen.blit(button1.image,(x1,y1))
+    screen.blit(button1.image,(x2,y2))
+    screen.blit(button1.image,(x3,y3))
+    screen.blit(button1.image,(x4,y4))
+   
+    # pygame.draw.circle(screen,(0,0,255),(x1,y1),10)
+    # pygame.draw.circle(screen,(0,0,255),(x2,y2),10)
 
-    pygame.draw.circle(screen,(0,0,255),(x3,y3),10)
-    pygame.draw.circle(screen,(0,0,255),(x4,y4),10)
-    y1 = y1 + C_SPEED
-    if y1 > HEIGHT:
-        y1 = -1
+    # pygame.draw.circle(screen,(0,0,255),(x3,y3),10)
+    # pygame.draw.circle(screen,(0,0,255),(x4,y4),10)
+    # y1 = y1 + C_SPEED
+    # if y1 > HEIGHT:
+    #     y1 = -1
 
     
     
