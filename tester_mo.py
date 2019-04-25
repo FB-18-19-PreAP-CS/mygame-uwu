@@ -27,15 +27,15 @@ y3 = 50
 x4 = 550
 y4 = 50
 
-def circle(color,size):
-    pygame.draw.circle(screen,color,size,10)
+#make sprite class, import image
 while not done:
     screen.blit(background_image,back_pos )
     
-    circle((0,0,255),(x1,y1))
-    circle((0,0,255),(x2,y2))
-    circle((0,0,255),(x3,y3))
-    circle((0,0,255),(x4,y4))
+    pygame.draw.circle(screen,(0,0,255),(x1,y1),10)
+    pygame.draw.circle(screen,(0,0,255),(x2,y2),10)
+
+    pygame.draw.circle(screen,(0,0,255),(x3,y3),10)
+    pygame.draw.circle(screen,(0,0,255),(x4,y4),10)
     y1 = y1 + C_SPEED
     if y1 > HEIGHT:
         y1 = -1
