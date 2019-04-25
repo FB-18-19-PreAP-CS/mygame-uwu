@@ -11,28 +11,30 @@ back_pos = [0,0]
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 done = False
 
-# LOCATION OF COLUMN ONE
-x1 = 400
-y1 = 50
-
-#LOCATION OF COLUMN TWO
-x2 = 450
-y2 = 50
-
-#LOCATION OF COLUMN THREE
-x3 = 500
-y3 = 50
-
-#LOCATION OF COLUMN FOUR 
-x4 = 550
-y4 = 50
-
 class Button(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load("blue_button-1-1.png.png")
 
 def four_columns():
+
+    # LOCATION OF COLUMN ONE
+    x1 = 400
+    y1 = 50
+
+    #LOCATION OF COLUMN TWO
+    x2 = 450
+    y2 = 50
+
+    #LOCATION OF COLUMN THREE
+    x3 = 500
+    y3 = 50
+
+    #LOCATION OF COLUMN FOUR 
+    x4 = 550
+    y4 = 50
+
+    #CREATES INITIAL COLUMNS OF FALLING BUTTONS
     button1 = Button()
     button2 = Button()
     button3 = Button()
