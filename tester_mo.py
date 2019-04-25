@@ -16,6 +16,10 @@ class Button(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load("blue_button-1-1.png.png")
 
+class Target():
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load("target-1.png.png")
 
 
 # LOCATION OF COLUMN ONE
@@ -42,9 +46,18 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
+
+    
+   
     screen.blit(background_image,back_pos )
+    #CREATES TARGET
+    t=Target()
+    screen.blit(t.image,(375,400))
+
+    #CREATES 4 COLUMNS
     button1 = Button()
     button2 = Button()
+
     button3 = Button()
     button4 = Button()
     screen.blit(button1.image,(x1,y1))
@@ -63,7 +76,7 @@ while not done:
     y4 = y4+ C_SPEED
     if y4 > HEIGHT:
         y4 = -1
-   
+
     
 
     
