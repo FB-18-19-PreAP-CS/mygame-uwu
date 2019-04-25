@@ -9,3 +9,4 @@ song = pygame.mixer.Sound("./sounds/8bit_twinkle_star.wav")
 while True:
     song.play()
     pygame.display.quit()
+
