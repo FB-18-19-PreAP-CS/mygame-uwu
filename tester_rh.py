@@ -21,6 +21,10 @@ class Button(pygame.sprite.Sprite):
     def blitme(self):
         if self.is_visible == True:
             screen.blit(self.image,self.loc)
+    def move_y(self,loc):
+        self.loc[1] = loc[1]+1
+        return self.loc
+    
 
 
 
@@ -44,15 +48,11 @@ y4 = 50
 
 #CREATES INITIAL COLUMNS OF FALLING BUTTONS
 buttons = []
-buttons.append(Button((400,50)))
-buttons.append(Button((450,50)))
-buttons.append(Button((500,50)))
-buttons.append(Button((550,50)))
+buttons.append(Button([400,50]))
+buttons.append(Button([450,50]))
+buttons.append(Button([500,50]))
+buttons.append(Button([550,50]))
 
-# button1 = Button((400,50))
-# button2 = Button((450,50))
-# button3 = Button((500,50)
-# button4 = Button((550,50))
 
 while not done:
     for event in pygame.event.get():
@@ -76,25 +76,13 @@ while not done:
     for butt in buttons:
         if butt.is_visible == True:
             butt.blitme()
+            butt.move_y(butt.loc)
+
         else:
             pass
-    # screen.blit(button1.image,(x1,y1))
-    # y1 = y1 + C_SPEED
-    # if y1 > HEIGHT:
-    #     y1 = -1
-    # screen.blit(button2.image,(x2,y2))
-    # y2 = y2 + C_SPEED
-    # if y2 > HEIGHT:
-    #     y2 = -1
-    # screen.blit(button3.image,(x3,y3))
-    # y3 = y3 + C_SPEED
-    # if y3 > HEIGHT:
-    #     y3 = -1
-    # screen.blit(button4.image,(x4,y4))
-    # y4 = y4+ C_SPEED
-    # if y4 > HEIGHT:
-    #     y4 = -1
-   
+
+
+
     
 
     
