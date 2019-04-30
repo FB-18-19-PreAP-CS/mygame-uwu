@@ -3,12 +3,11 @@ import time
 import pygame_functions
 WIDTH = 1000
 HEIGHT = 1000
-C_SPEED = 2
 pygame.init()
 screenRefresh = True
 background_image = pygame.image.load("plain_bg.jpg")
 back_pos = [0,0]
-
+pygame.time.Clock()
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 done = False
 
@@ -26,26 +25,6 @@ class Button(pygame.sprite.Sprite):
         return self.loc
     
 
-
-
-
-
-# LOCATION OF COLUMN ONE
-x1 = 400
-y1 = 50
-
-#LOCATION OF COLUMN TWO
-x2 = 450
-y2 = 50
-
-#LOCATION OF COLUMN THREE
-x3 = 500
-y3 = 50
-
-#LOCATION OF COLUMN FOUR 
-x4 = 550
-y4 = 50
-
 #CREATES INITIAL COLUMNS OF FALLING BUTTONS
 buttons = []
 buttons.append(Button([400,50]))
@@ -54,7 +33,11 @@ buttons.append(Button([500,50]))
 buttons.append(Button([550,50]))
 
 
+pygame.mixer.init()
+first_song = pygame.mixer.music.load('tt_littlestar.ogg')
+pygame.mixer.music.play()
 while not done:
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -81,13 +64,6 @@ while not done:
         else:
             pass
 
-
-
-    
-
-    
-    
-    
     pygame.display.flip()
         
         
