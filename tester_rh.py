@@ -7,7 +7,7 @@ pygame.init()
 screenRefresh = True
 background_image = pygame.image.load("plain_bg.jpg")
 back_pos = [0,0]
-pygame.time.Clock()
+clock = pygame.time.Clock()
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 done = False
 
@@ -21,7 +21,7 @@ class Button(pygame.sprite.Sprite):
         if self.is_visible == True:
             screen.blit(self.image,self.loc)
     def move_y(self,loc):
-        self.loc[1] = loc[1]+1
+        self.loc[1] = loc[1]+10
         return self.loc
     
 
@@ -65,6 +65,7 @@ while not done:
             pass
 
     pygame.display.flip()
+    clock.tick(30)
         
         
 
