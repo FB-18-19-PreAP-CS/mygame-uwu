@@ -3,7 +3,8 @@ import time
 import pygame_functions
 WIDTH = 1000
 HEIGHT = 1000
-C_SPEED = 2
+
+
 pygame.init()
 screenRefresh = True
 background_image = pygame.image.load("plain_bg.jpg")
@@ -22,8 +23,13 @@ class Button(pygame.sprite.Sprite):
         if self.is_visible == True:
             screen.blit(self.image,self.loc)
     def move_y(self,loc):
-        self.loc[1] = loc[1]+1
+        self.loc[1] = loc[1]+7
         return self.loc
+
+class Target():
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load("target-1.png.png")
     
 
 
@@ -53,6 +59,10 @@ buttons.append(Button([450,50]))
 buttons.append(Button([500,50]))
 buttons.append(Button([550,50]))
 
+pygame.mixer.init()
+first_song = pygame.mixer.music.load("./sounds/tt_littlestar.ogg")
+pygame.mixer.music.play()
+pygame.event.wait()
 
 while not done:
     for event in pygame.event.get():
@@ -72,6 +82,10 @@ while not done:
                 buttons[3].is_visible = False
             
     screen.blit(background_image,back_pos )
+
+    t=Target()
+    screen.blit(t.image,(375,400))
+
 
     for butt in buttons:
         if butt.is_visible == True:
