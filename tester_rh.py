@@ -33,31 +33,13 @@ class Target():
     
 
 
-
-
-
-# LOCATION OF COLUMN ONE
-x1 = 400
-y1 = 50
-
-#LOCATION OF COLUMN TWO
-x2 = 450
-y2 = 50
-
-#LOCATION OF COLUMN THREE
-x3 = 500
-y3 = 50
-
-#LOCATION OF COLUMN FOUR 
-x4 = 550
-y4 = 50
-
 #CREATES INITIAL COLUMNS OF FALLING BUTTONS
 buttons = []
 buttons.append(Button([400,50]))
 buttons.append(Button([450,50]))
 buttons.append(Button([500,50]))
 buttons.append(Button([550,50]))
+
 
 pygame.mixer.init()
 first_song = pygame.mixer.music.load("./sounds/tt_littlestar.ogg")
@@ -70,7 +52,11 @@ while not done:
             pygame.quit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
+                for i in range(len(column_a)):
+                    if column_a[i] == "x":
+
                 buttons[0].is_visible = False
+
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_s:
                 buttons[1].is_visible = False
@@ -91,9 +77,26 @@ while not done:
         if butt.is_visible == True:
             butt.blitme()
             butt.move_y(butt.loc)
-
+            
         else:
             pass
+
+column_a = ['-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','x','-','-','-','-','-','-','-','x','-','-','-','-','-','-','-','-','x','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','x']
+column_s = ['-','x','x','-','-','-','-','-','-','-','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','-','x','x','-','-','x','x','-','-','-','-','-','-','-','-','-','-','x','x','-']
+column_d = ['-','-','-','x','x','-','-','x','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','x','-','-','-','x','x','-','-','-']
+column_f = ['-','-','-','-','-','x','x','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','-','-','-','-','-','x','x','-','-','x','x','-','-','-','-','-']
+
+
+
+for space_a,space_s,space_d,space_f in zip(column_a,column_s,column_d,column_f):
+    if space_a == "x":
+        pass
+    if space_s == "x":
+        pass
+    if space_d == "x":
+        pass
+    if space_f == "x":
+        pass
 
 
 
