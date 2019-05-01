@@ -32,6 +32,7 @@ buttons.append(Button([450,50]))
 buttons.append(Button([500,50]))
 buttons.append(Button([550,50]))
 
+column_a = ['-','x','x','-']
 
 pygame.mixer.init()
 first_song = pygame.mixer.music.load('tt_littlestar.ogg')
@@ -44,13 +45,10 @@ while not done:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
                 buttons[0].is_visible = False
-        if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_s:
                 buttons[1].is_visible = False
-        if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_d:
                 buttons[2].is_visible = False
-        if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_f:
                 buttons[3].is_visible = False
             
@@ -63,9 +61,17 @@ while not done:
 
         else:
             pass
+    start_time = pygame.time.get_ticks()
+    for space_a in zip(column_a):
+        if buttons[0].is_visible == False:
+            if space_a == 'x':
+                pygame.draw.circle(screen,'blue',(500,500),10,10)
+
 
     pygame.display.flip()
-    clock.tick(30)
+    # print(clock.tick(30))
+    print(pygame.time.get_ticks())
+    
         
         
 
