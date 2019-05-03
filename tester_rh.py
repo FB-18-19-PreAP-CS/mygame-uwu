@@ -21,7 +21,7 @@ class Button(pygame.sprite.Sprite):
         if self.is_visible == True:
             screen.blit(self.image,self.loc)
     def move_y(self,loc):
-        self.loc[1] = loc[1]+10
+        self.loc[1] = loc[1]+5
         return self.loc
     
 
@@ -37,6 +37,7 @@ column_a = ['-','x','x','-']
 pygame.mixer.init()
 first_song = pygame.mixer.music.load('tt_littlestar.ogg')
 pygame.mixer.music.play()
+start_time = time.time()
 while not done:
 
     for event in pygame.event.get():
@@ -58,10 +59,14 @@ while not done:
         if butt.is_visible == True:
             butt.blitme()
             butt.move_y(butt.loc)
+        if buttons[0].loc[1]==700:
+            end_time = time.time()
+            print(end_time - start_time)
 
         else:
             pass
-    start_time = pygame.time.get_ticks()
+
+    # start_time = pygame.time.get_ticks()
     for space_a in zip(column_a):
         if buttons[0].is_visible == False:
             if space_a == 'x':
@@ -70,7 +75,7 @@ while not done:
 
     pygame.display.flip()
     # print(clock.tick(30))
-    print(pygame.time.get_ticks())
+    # print(pygame.time.get_ticks())
     
         
         
