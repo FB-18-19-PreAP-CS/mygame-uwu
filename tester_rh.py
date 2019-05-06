@@ -1,6 +1,6 @@
 import pygame
 import time 
-import pygame_functions
+# import pygame_functions
 WIDTH = 1000
 HEIGHT = 1000
 pygame.init()
@@ -13,6 +13,7 @@ done = False
 
 class Button(pygame.sprite.Sprite):
     def __init__(self,loc):
+
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load("blue_button-1-1.png.png")
         self.loc = loc
@@ -24,19 +25,24 @@ class Button(pygame.sprite.Sprite):
         self.loc[1] = loc[1]+5
         return self.loc
     
-
+class Target():
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load("target-1.png")
+    def blitme(self):
+        screen.blit(self.image,(375,700))
 #CREATES INITIAL COLUMNS OF FALLING BUTTONS
-
+targ = Target()
 buttons = []
 buttons.append(Button([400,50]))
 buttons.append(Button([450,50]))
 buttons.append(Button([500,50]))
 buttons.append(Button([550,50]))
 
-time_a = [1.5,2,]
+time_a = [2.45,0,0,0,0,0,0]
 
 pygame.mixer.init()
-first_song = pygame.mixer.music.load('tt_littlestar(1).ogg')
+first_song = pygame.mixer.music.load('tt_lit.ogg')
 pygame.mixer.music.play()
 start_time = time.time()
 while not done:
@@ -49,7 +55,7 @@ while not done:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
                 buttons[0].is_visible = False
-                if elapsed == time_a[0]:
+                if elapsed-.3 < time_a[0] and elapsed +.3 > time_a[0]:
                     print('yes')
                     time_a = time_a[1:]
             if event.key == pygame.K_s:
@@ -59,24 +65,18 @@ while not done:
             if event.key == pygame.K_f:
                 buttons[3].is_visible = False
 
-            
+    if elapsed-.3 < time_a[0] and elapsed +.3 > time_a[0]:
+        print('hit it',elapsed)
     screen.blit(background_image,back_pos )
 
-    # for butt_a,butt_s,butt_d,butt_f in zip(buttons_a,buttons_s,buttons_d,buttons_f):
-    #     if butt.is_visible == True:
-    #         butt.blitme()
-    #         butt.move_y(butt.loc)
-    #     if butt_a[0].loc[1]==700:
-    #         end_time = time.time()
-    #         print(end_time - start_time)
 
-    #     else:
-    #         pass
+    targ.blitme()
+    
     for butt in buttons:
-        if butt.is_visible == True:
-            butt.blitme()
-            butt.move_y(butt.loc)
-        if butt[0].loc[1]==700:
+
+        butt.blitme()
+        butt.move_y(butt.loc)
+        if butt.loc[1]==700:
             end_time = time.time()
             print(end_time - start_time)
 
