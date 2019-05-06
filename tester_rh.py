@@ -26,51 +26,65 @@ class Button(pygame.sprite.Sprite):
     
 
 #CREATES INITIAL COLUMNS OF FALLING BUTTONS
+
 buttons = []
 buttons.append(Button([400,50]))
 buttons.append(Button([450,50]))
 buttons.append(Button([500,50]))
 buttons.append(Button([550,50]))
 
-column_a = ['-','x','x','-']
+time_a = [1.5,2,]
 
 pygame.mixer.init()
-first_song = pygame.mixer.music.load('tt_littlestar.ogg')
+first_song = pygame.mixer.music.load('tt_littlestar(1).ogg')
 pygame.mixer.music.play()
 start_time = time.time()
 while not done:
-
+#TIME it takes for button to reach target: 2.121
+    end_time = time.time()
+    elapsed = end_time - start_time
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
                 buttons[0].is_visible = False
+                if elapsed == time_a[0]:
+                    print('yes')
+                    time_a = time_a[1:]
             if event.key == pygame.K_s:
                 buttons[1].is_visible = False
             if event.key == pygame.K_d:
                 buttons[2].is_visible = False
             if event.key == pygame.K_f:
                 buttons[3].is_visible = False
+
             
     screen.blit(background_image,back_pos )
 
+    # for butt_a,butt_s,butt_d,butt_f in zip(buttons_a,buttons_s,buttons_d,buttons_f):
+    #     if butt.is_visible == True:
+    #         butt.blitme()
+    #         butt.move_y(butt.loc)
+    #     if butt_a[0].loc[1]==700:
+    #         end_time = time.time()
+    #         print(end_time - start_time)
+
+    #     else:
+    #         pass
     for butt in buttons:
         if butt.is_visible == True:
             butt.blitme()
             butt.move_y(butt.loc)
-        if buttons[0].loc[1]==700:
+        if butt[0].loc[1]==700:
             end_time = time.time()
             print(end_time - start_time)
 
         else:
             pass
 
-    # start_time = pygame.time.get_ticks()
-    for space_a in zip(column_a):
-        if buttons[0].is_visible == False:
-            if space_a == 'x':
-                pygame.draw.circle(screen,'blue',(500,500),10,10)
+
+
 
 
     pygame.display.flip()
