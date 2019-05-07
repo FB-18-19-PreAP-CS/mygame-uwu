@@ -97,9 +97,9 @@ def beatmap():
 def show_buttons():
     print(beatmap()[0])
     for ele in beatmap()[0]:
-        if ele:
-            ele.blitme()
-            ele.move_y(ele.loc)
+        
+        ele.blitme()
+        ele.move_y(ele.loc)
 
 
 
