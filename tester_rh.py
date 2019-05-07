@@ -34,47 +34,75 @@ class Target():
 
 
 #CREATES INITIAL COLUMNS OF FALLING BUTTONS
-buttons_a = []
-buttons_s = []
-buttons_d = []
-buttons_f = []
+
 
 column_a = ['-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','x','-','-','-','-','-','-','-','x','-','-','-','-','-','-','-','-','x','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','x']
-    column_s = ['-','x','x','-','-','-','-','-','-','-','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','-','x','x','-','-','x','x','-','-','-','-','-','-','-','-','-','-','x','x','-']
-    column_d = ['-','-','-','x','x','-','-','x','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','x','-','-','-','x','x','-','-','-']
-    column_f = ['-','-','-','-','-','x','x','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','-','-','-','-','-','x','x','-','-','x','x','-','-','-','-','-']
+column_s = ['-','x','x','-','-','-','-','-','-','-','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','-','x','x','-','-','x','x','-','-','-','-','-','-','-','-','-','-','x','x','-']
+column_d = ['-','-','-','x','x','-','-','x','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','x','-','-','-','x','x','-','-','-']
+column_f = ['-','-','-','-','-','x','x','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','-','-','-','-','-','x','x','-','-','x','x','-','-','-','-','-']
 
-#BRO THIS AINT RIGHT FIX IT 
+ 
 def beatmap():
+    buttons_a = []
+    buttons_s = []
+    buttons_d = []
+    buttons_f = []
+
     for space_a,space_s,space_d,space_f in zip(column_a,column_s,column_d,column_f):
 
         if space_a == "-":
             butt_a = Button([400,10])
-            buttons_a.append(butt_a)
             butt_a.is_visible ==False
+            buttons_a.append(butt_a)
+            
         if space_a == "x":
             butt_a = Button([400,10])
-            buttons_a.append(butt_a)
             butt_a.is_visible ==True
+            buttons_a.append(butt_a)
+            
+        if space_s == "-":
+            butt_s = Button([400,10])
+            butt_s.is_visible ==False
+            buttons_s.append(butt_s)
+
 
         if space_s == "x":
-            pass
+            butt_s = Button([400,10])
+            butt_s.is_visible ==True
+            buttons_s.append(butt_s)
+
+
+        if space_d == "-":
+            butt_d = Button([400,10])
+            butt_d.is_visible ==False
+            buttons_d.append(butt_d)
+
         if space_d == "x":
-            pass
+            butt_d = Button([400,10])
+            butt_d.is_visible ==True
+            buttons_d.append(butt_d)
+
+        if space_f == "-":
+            butt_f = Button([400,10])
+            butt_f.is_visible ==False
+            buttons_f.append(butt_f)
+
         if space_f == "x":
-            pass
+            butt_f = Button([400,10])
+            butt_f.is_visible ==False
+            buttons_f.append(butt_f)
+    
+    return [buttons_a,buttons_s,buttons_d,buttons_f]
 
-# buttons_a.append(Button([400,10]))
-# buttons_a.append(Button([400,50]))
+def show_buttons():
+    print(beatmap()[0])
+    for ele in beatmap()[0]:
+        if ele:
+            ele.blitme()
+            ele.move_y(ele.loc)
 
-# buttons_s.append(Button([450,10]))
-# buttons_s.append(Button([450,50]))
 
-# buttons_d.append(Button([500,10]))
-# buttons_d.append(Button([500,50]))
 
-# buttons_f.append(Button([550,10]))
-# buttons_f.append(Button([550,50]))
 
 
 pygame.mixer.init()
@@ -86,6 +114,9 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
+
+        
+        
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
                 for i in range(len(buttons_a)):
@@ -93,6 +124,7 @@ while not done:
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_s:
+
                 for i in range(len(buttons_s)):
                     buttons_s[i].is_visible = False
 
@@ -109,32 +141,35 @@ while not done:
             
     screen.blit(background_image,back_pos )
 
+
     t=Target()
     screen.blit(t.image,(375,700))
 
+    show_buttons()
+
 
     
-    #I DONT KNOW WHERE THIS GOES IT'S JUST HERE 
+    # #I DONT KNOW WHERE THIS GOES IT'S JUST HERE 
 
-    for butt_a,butt_s,butt_d,butt_f in zip(buttons_a,buttons_s,buttons_d,buttons_f):
+    # for butt_a,butt_s,butt_d,butt_f in zip(buttons_a,buttons_s,buttons_d,buttons_f):
         
-        butt_a.blitme()
-        butt_a.move_y(butt_a.loc)
+    #     butt_a.blitme()
+    #     butt_a.move_y(butt_a.loc)
 
-        if butt_s.is_visible == True:
-            butt_s.blitme()
-            butt_s.move_y(butt_s.loc)
+    #     if butt_s.is_visible == True:
+    #         butt_s.blitme()
+    #         butt_s.move_y(butt_s.loc)
 
-        if butt_d.is_visible == True:
-            butt_d.blitme()
-            butt_d.move_y(butt_d.loc)
+    #     if butt_d.is_visible == True:
+    #         butt_d.blitme()
+    #         butt_d.move_y(butt_d.loc)
 
-        if butt_f.is_visible == True:
-            butt_f.blitme()
-            butt_f.move_y(butt_f.loc)
+    #     if butt_f.is_visible == True:
+    #         butt_f.blitme()
+    #         butt_f.move_y(butt_f.loc)
             
-        else:
-            pass
+    #     else:
+    #         pass
 
 
     
