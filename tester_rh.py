@@ -116,7 +116,7 @@ def show_buttons(bm):
     
     
     for ele in bm[0]:
-        print(ele.loc)
+        
         ele.blitme()
         ele.move_y()
 
