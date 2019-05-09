@@ -22,9 +22,9 @@ class Button(pygame.sprite.Sprite):
     def blitme(self):
         if self.is_visible == True:
             screen.blit(self.image,self.loc)
-    def move_y(self,loc):
-        self.loc[1] = loc[1]+5
-        return self.loc
+    def move_y(self):
+        self.loc[1] = self.loc[1]+5
+        
 
 class Blank(pygame.sprite.Sprite):
     def __init__(self,loc):
@@ -35,9 +35,9 @@ class Blank(pygame.sprite.Sprite):
     def blitme(self):
         if self.is_visible == True:
             screen.blit(self.image,self.loc)
-    def move_y(self,loc):
-        self.loc[1] = loc[1]+5
-        return self.loc
+    def move_y(self):
+        self.loc[1] = self.loc[1]+5
+       
 class Target():
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -62,73 +62,76 @@ def beatmap():
     buttons_s = []
     buttons_d = []
     buttons_f = []
-
+    row = 0
+    
     for space_a,space_s,space_d,space_f in zip(column_a,column_s,column_d,column_f):
 
         if space_a == "-":
-            butt_a = Blank([400,10])
+            butt_a = Blank([400,10 - row * 30])
         
             buttons_a.append(butt_a)
             
         if space_a == "x":
-            butt_a = Button([400,10])
+            butt_a = Button([400,10 - row * 30])
             
             buttons_a.append(butt_a)
             
         if space_s == "-":
-            butt_s = Blank([450,10])
+            butt_s = Blank([450,10- row * 30])
             
             buttons_s.append(butt_s)
 
 
         if space_s == "x":
-            butt_s = Button([450,10])
+            butt_s = Button([450,10- row * 30])
             
             buttons_s.append(butt_s)
 
 
         if space_d == "-":
-            butt_d = Blank([500,10])
+            butt_d = Blank([500,10- row * 30])
             
             buttons_d.append(butt_d)
 
         if space_d == "x":
-            butt_d = Button([500,10])
+            butt_d = Button([500,10- row * 30])
             
             buttons_d.append(butt_d)
 
         if space_f == "-":
-            butt_f = Blank([550,10])
+            butt_f = Blank([550,10- row * 30])
             
             buttons_f.append(butt_f)
 
         if space_f == "x":
-            butt_f = Button([550,10])
+            butt_f = Button([550,10- row * 30])
             
             buttons_f.append(butt_f)
+        
+        row += 1
     
     return [buttons_a,buttons_s,buttons_d,buttons_f]
 
-def show_buttons():
-    global bm
-    print(bm[0])
+def show_buttons(bm):
+    
+    
     for ele in bm[0]:
-        
+        print(ele.loc)
         ele.blitme()
-        ele.move_y(ele.loc)
+        ele.move_y()
 
     for ele in bm[1]:
         
         ele.blitme()
-        ele.move_y(ele.loc)
+        ele.move_y()
     for ele in bm[2]:
         
         ele.blitme()
-        ele.move_y(ele.loc)
+        ele.move_y()
     for ele in bm[3]:
         
         ele.blitme()
-        ele.move_y(ele.loc)
+        ele.move_y()
 
 bm = beatmap()
 
@@ -173,7 +176,7 @@ while not done:
     t=Target()
     screen.blit(t.image,(375,700))
 
-    show_buttons()
+    show_buttons(bm)
  
     pygame.display.flip()
         
