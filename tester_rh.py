@@ -67,44 +67,44 @@ def beatmap():
     for space_a,space_s,space_d,space_f in zip(column_a,column_s,column_d,column_f):
 
         if space_a == "-":
-            butt_a = Blank([400,10 - row * 30])
+            butt_a = Blank([400,10 - row * 40])
         
             buttons_a.append(butt_a)
             
         if space_a == "x":
-            butt_a = Button([400,10 - row * 30])
+            butt_a = Button([400,10 - row * 40])
             
             buttons_a.append(butt_a)
             
         if space_s == "-":
-            butt_s = Blank([450,10- row * 30])
+            butt_s = Blank([450,10- row * 40])
             
             buttons_s.append(butt_s)
 
 
         if space_s == "x":
-            butt_s = Button([450,10- row * 30])
+            butt_s = Button([450,10- row * 40])
             
             buttons_s.append(butt_s)
 
 
         if space_d == "-":
-            butt_d = Blank([500,10- row * 30])
+            butt_d = Blank([500,10- row * 40])
             
             buttons_d.append(butt_d)
 
         if space_d == "x":
-            butt_d = Button([500,10- row * 30])
+            butt_d = Button([500,10- row * 40])
             
             buttons_d.append(butt_d)
 
         if space_f == "-":
-            butt_f = Blank([550,10- row * 30])
+            butt_f = Blank([550,10- row * 40])
             
             buttons_f.append(butt_f)
 
         if space_f == "x":
-            butt_f = Button([550,10- row * 30])
+            butt_f = Button([550,10- row * 40])
             
             buttons_f.append(butt_f)
         
