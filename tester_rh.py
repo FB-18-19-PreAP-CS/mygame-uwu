@@ -41,7 +41,7 @@ class Blank(pygame.sprite.Sprite):
 class Target():
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("target-1.png.png")
+        self.image = pygame.image.load("target-1.png")
     
 
 
