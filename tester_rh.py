@@ -150,24 +150,28 @@ while not done:
         
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
-                for i in range(len(buttons_a)):
-                    buttons_a[i].is_visible = False
+                bm[0][0].is_visible = False
+                bm[0] = bm[0][1:]
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_s:
+                bm[1][0].is_visible = False
+                bm[1] = bm[1][1:]
 
-                for i in range(len(buttons_s)):
-                    buttons_s[i].is_visible = False
+
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_d:
-                for i in range(len(buttons_d)):
-                    buttons_d[i].is_visible = False
+                bm[2][0].is_visible = False
+                bm[2] = bm[2][1:]
+
+
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_f:
-                for i in range(len(buttons_f)):
-                    buttons_f[i].is_visible = False
+                bm[3][0].is_visible = False
+                bm[3] = bm[3][1:]
+
 
             
     screen.blit(background_image,back_pos )
