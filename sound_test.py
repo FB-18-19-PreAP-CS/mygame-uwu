@@ -1,12 +1,24 @@
-import pygame
+import pygame.midi, time
 
-pygame.mixer.init()
-pygame.init()
+a = 440
+g = 392
+f = 349.23
+e = 329.63	
+d = 293.66
+c = 261.63
 
-screen = pygame.display.set_mode((1000,1000))
-song = pygame.mixer.Sound("./sounds/8bit_twinkle_star.wav")
+wait_time = 0.5
 
-while True:
-    song.play()
-    pygame.display.quit()
+pygame.midi.init()
 
+player = pygame.midi.get_default_output_id()
+
+player.set_instrument(1)
+
+player.note_on(c)
+time.sleep(wait_time)
+player.note_off(c)
+
+player.note_on(c)
+time.sleep(wait_time)
+player.note_off(c)
