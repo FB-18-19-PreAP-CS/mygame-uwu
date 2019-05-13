@@ -1,8 +1,11 @@
+
+  
 import pygame
 import time 
 import pygame_functions
 WIDTH = 1000
 HEIGHT = 1000
+
 
 
 pygame.init()
@@ -63,59 +66,63 @@ def beatmap():
     buttons_d = []
     buttons_f = []
     row = 0
-    
+    spacing = 130
     for space_a,space_s,space_d,space_f in zip(column_a,column_s,column_d,column_f):
 
         if space_a == "-":
-            butt_a = Blank([400,10 - row * 40])
+            blank_a = Blank([400,10 - row * spacing])
         
-            buttons_a.append(butt_a)
+            buttons_a.append(blank_a)
             
         if space_a == "x":
-            butt_a = Button([400,10 - row * 40])
+            butt_a = Button([400,10 - row * spacing])
             
             buttons_a.append(butt_a)
             
         if space_s == "-":
-            butt_s = Blank([450,10- row * 40])
+            blank_s = Blank([450,10- row * spacing])
             
-            buttons_s.append(butt_s)
+            buttons_s.append(blank_s)
 
 
         if space_s == "x":
-            butt_s = Button([450,10- row * 40])
+            butt_s = Button([450,10- row * spacing])
             
             buttons_s.append(butt_s)
 
 
         if space_d == "-":
-            butt_d = Blank([500,10- row * 40])
+            blank_d = Blank([500,10- row * spacing])
             
-            buttons_d.append(butt_d)
+            buttons_d.append(blank_d)
 
         if space_d == "x":
-            butt_d = Button([500,10- row * 40])
+            butt_d = Button([500,10- row * spacing])
             
             buttons_d.append(butt_d)
 
         if space_f == "-":
-            butt_f = Blank([550,10- row * 40])
+            blank_f = Blank([550,10- row * spacing])
             
-            buttons_f.append(butt_f)
+            buttons_f.append(blank_f)
 
         if space_f == "x":
-            butt_f = Button([550,10- row * 40])
+            butt_f = Button([550,10- row * spacing])
             
             buttons_f.append(butt_f)
         
         row += 1
     
     return [buttons_a,buttons_s,buttons_d,buttons_f]
-
+bm = beatmap()
 def show_buttons(bm):
     
-    
+   
     for ele in bm[0]:
+        if type(ele) == Blank:
+            print('blank')
+        elif type(ele) == Button:
+            print('button')
         
         ele.blitme()
         ele.move_y()
@@ -133,11 +140,11 @@ def show_buttons(bm):
         ele.blitme()
         ele.move_y()
 
-bm = beatmap()
+
 
 
 pygame.mixer.init()
-first_song = pygame.mixer.music.load("./sounds/tt_littlestar.ogg")
+first_song = pygame.mixer.music.load("./sounds/tt_lit.ogg")
 pygame.mixer.music.play()
 pygame.event.wait()
 
@@ -150,29 +157,27 @@ while not done:
         
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
-                bm[0][0].is_visible = False
-                bm[0] = bm[0][1:]
+                if type(bm[0][0]) != Blank:
+                    bm[0][0].is_visible = False
+        bm[0] = bm[0][1:]
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_s:
-                bm[1][0].is_visible = False
-                bm[1] = bm[1][1:]
-
-
+                if type(bm[1][0]) == Button:
+                    bm[1][0].is_visible = False
+        bm[1] = bm[1][1:]
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_d:
-                bm[2][0].is_visible = False
-                bm[2] = bm[2][1:]
-
-
+                if type(bm[2][0]) == Button:
+                    bm[2][0].is_visible = False
+        bm[2] = bm[2][1:]
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_f:
-                bm[3][0].is_visible = False
-                bm[3] = bm[3][1:]
-
-
+                if type(bm[3][0]) == Button:
+                    bm[3][0].is_visible = False
+        bm[3] = bm[3][1:]
             
     screen.blit(background_image,back_pos )
 
@@ -183,14 +188,3 @@ while not done:
     show_buttons(bm)
  
     pygame.display.flip()
-        
-        
-
-
-
-
-
-   
-    
-
-        
