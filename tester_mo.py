@@ -135,7 +135,7 @@ def show_buttons(bm):
         ele.blitme()
         ele.move_y()
 
-font_name = pygame.font.match_font('arial')
+font_name = pygame.font.match_font('dejavusansmono')
 
 def draw_text(surf,text,size,x,y):
     font = pygame.font.Font(font_name,size)
@@ -225,5 +225,5 @@ while not done:
     show_buttons(bm)
  
     draw_text(screen, str(score), 18, WIDTH/2, 20)
-    
+
     pygame.display.flip()
