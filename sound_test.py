@@ -12,7 +12,8 @@ c = 72
 wait_time = 0.5
 
 pygame.midi.init()
-player = pygame.midi.Output(0)
+player = pygame.midi.Output(1)
+player.get_device_info()
 player.set_instrument(1)
 
 keys_1 = [c,c,g,g,a,a,g]
