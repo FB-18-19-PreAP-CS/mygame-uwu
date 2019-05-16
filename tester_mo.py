@@ -135,10 +135,10 @@ def show_buttons(bm):
         ele.blitme()
         ele.move_y()
 
-font_name = pygame.font.match_font('dejavusansmono')
+
 
 def draw_text(surf,text,size,x,y):
-    font = pygame.font.Font(font_name,size)
+    font = pygame.font.Font('Fipps-Regular.otf',size)
     text_surface = font.render(text,True, (255,0,0))
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x,y)
@@ -163,9 +163,9 @@ while not done:
     # presstime_s = abs(elapsed-float(time_s[0])-.18)
     # presstime_d = abs(elapsed-float(time_d[0])-.18)
     # presstime_f = abs(elapsed-float(time_f[0])-.18)
-    window_a = abs(bm[0][0].loc[1]- 700)
-    window_s = abs(bm[1][0].loc[1]- 700)
-    window_d = abs(bm[2][0].loc[1]- 700)
+    
+   
+    
     window_f = abs(bm[3][0].loc[1]- 700)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -176,6 +176,7 @@ while not done:
 
                 while not type(bm[0][0]) == Button:
                     bm[0] = bm[0][1:]
+                window_a = abs(bm[0][0].loc[1]- 700)
                 if window_a < score_range:
                     score += 50
                     print('yes')
@@ -187,7 +188,8 @@ while not done:
 
                 while not type(bm[1][0]) == Button:
                     bm[1]=bm[1][1:]
-                if window_d < score_range:
+                window_s = abs(bm[1][0].loc[1]- 700)
+                if window_s < score_range:
                     score += 50
                     print('yes')
                 bm[1][0].is_visible = False
@@ -198,7 +200,8 @@ while not done:
 
                 while not type(bm[2][0]) == Button:
                     bm[2] = bm[2][1:]
-                if window_f < score_range:
+                window_d = abs(bm[2][0].loc[1]- 700)
+                if window_d < score_range:
                     score += 50
                     print('yes')
                 bm[2][0].is_visible = False
@@ -210,7 +213,8 @@ while not done:
 
                 while not type(bm[3][0]) == Button:
                     bm[3] = bm[3][1:]
-                if window_s < score_range:
+                window_f = abs(bm[2][0].loc[1]- 700)
+                if window_f < score_range:
                     score += 50
                     print('yes')
                 bm[3][0].is_visible = False
