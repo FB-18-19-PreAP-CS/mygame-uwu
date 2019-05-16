@@ -1,63 +1,66 @@
-import pygame.midi, time
+import pygame, time
 
-a = 81
-g = 79
-f = 77
-e = 76
-d = 74
-c = 72
+# pygame.mixer.init()
 
-# instrument = grand_piano
+# pygame.mixer.pre_init(44100, -16, 2, 2048)
+pygame.init()
+screen = pygame.display.set_mode((640, 480))
 
-wait_time = 0.5
 
-pygame.midi.init()
-player = pygame.midi.Output(1)
-player.get_device_info()
-player.set_instrument(1)
+a = pygame.mixer.Sound("./sounds/a.ogg")
+g = pygame.mixer.Sound("./sounds/g.ogg")
+f = pygame.mixer.Sound("./sounds/f.ogg")
+e = pygame.mixer.Sound("./sounds/e.ogg")
+d = pygame.mixer.Sound("./sounds/d.ogg")
+c = pygame.mixer.Sound("./sounds/c.ogg")
 
 keys_1 = [c,c,g,g,a,a,g]
 keys_2 = [f,f,e,e,d,d,c]
 keys_3 = [g,g,f,f,e,e,d]
 
-for note in keys_1:
-    player.note_on(int(note),127)
-    time.sleep(wait_time)
-    player.note_off(int(note),127)
-time.sleep(wait_time)
-for note in keys_2:
-    player.note_on(int(note),127)
-    time.sleep(wait_time)
-    player.note_off(int(note),127)
-time.sleep(wait_time)
-for note in keys_3:
-    player.note_on(int(note),127)
-    time.sleep(wait_time)
-    player.note_off(int(note),127)
-time.sleep(wait_time)
-for note in keys_3:
-    player.note_on(int(note),127)
-    time.sleep(wait_time)
-    player.note_off(int(note),127)
-time.sleep(wait_time)
-for note in keys_1:
-    player.note_on(int(note),127)
-    time.sleep(wait_time)
-    player.note_off(int(note),127)
-time.sleep(wait_time)
-for note in keys_2:
-    player.note_on(int(note),127)
-    time.sleep(wait_time)
-    player.note_off(int(note),127)
+def a():
+    pygame.mixer.music.load('./sounds/a.ogg')
+    pygame.mixer.music.play()
 
-# player.note_on(int(c),127)
-# time.sleep(wait_time)
-# player.note_off(int(c),127)
+def g():
+    pygame.mixer.music.load('./sounds/g.ogg')
+    pygame.mixer.music.play()
 
-# player.note_on(int(c),127)
-# time.sleep(wait_time)
-# player.note_off(int(c),127)
+def f():
+    pygame.mixer.music.load('./sounds/f.ogg')
+    pygame.mixer.music.play()
 
-del player #IMPORTANT - The other problem is that you don't delete the midi output object at the end before quitting
-pygame.midi.quit()
+def e():
+    pygame.mixer.music.load('./sounds/e.ogg')
+    pygame.mixer.music.play()
 
+def d():
+    pygame.mixer.music.load('./sounds/d.ogg')
+    pygame.mixer.music.play()
+
+def c():
+    pygame.mixer.music.load('./sounds/c.ogg')
+    pygame.mixer.music.play()
+
+c()
+time.sleep(.5)
+c()
+time.sleep(.5)
+g()
+time.sleep(.65)
+g()
+
+
+running = True
+while running:
+  for event in pygame.event.get():
+    if event.type == pygame.QUIT:
+      running = False
+
+# pygame.mixer.init()  # Initialize the mixer module.
+# sound1 = pygame.mixer.Sound('./sounds/c.ogg')  # Load a sound.
+
+# while True:
+#     inpt = input('Press enter to play the sound: ')
+#     sound1.play()  # Play the sound.
+#     print('Playing sound')
