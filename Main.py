@@ -6,6 +6,8 @@ HEIGHT = 1000
 
 
 
+
+
 pygame.init()
 screenRefresh = True
 background_image = pygame.image.load("plain_bg.jpg")
@@ -149,9 +151,7 @@ def draw_text(surf,text,size,x,y):
 
 
 
-pygame.mixer.init()
-first_song = pygame.mixer.music.load("tt_lit.ogg")
-pygame.mixer.music.play()
+
 pygame.event.wait()
 # start = time.time()
 score_med = 30
