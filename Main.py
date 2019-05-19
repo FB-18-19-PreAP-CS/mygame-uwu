@@ -4,13 +4,17 @@ import time
 WIDTH = 1000
 HEIGHT = 1000
 
-
+#BACKGROUND NAMES
+#space_bg_b.png
+#space_bg_r.png
+#space_bg_g.png
+#space_bg_p.png
 
 
 
 pygame.init()
 screenRefresh = True
-background_image = pygame.image.load("plain_bg.jpg")
+background_image = pygame.image.load("space_bg_p.png")
 back_pos = [0,0]
 
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
