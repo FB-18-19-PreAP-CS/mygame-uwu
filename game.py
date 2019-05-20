@@ -3,15 +3,6 @@ import time
 # import pygame_functions
 WIDTH = 1000
 HEIGHT = 1000
-pygame.mixer.init()
-a = pygame.mixer.Sound("./sounds/a.ogg")
-g = pygame.mixer.Sound("./sounds/g.ogg")
-f = pygame.mixer.Sound("./sounds/f.ogg")
-e = pygame.mixer.Sound("./sounds/e.ogg")
-d = pygame.mixer.Sound("./sounds/d.ogg")
-c = pygame.mixer.Sound("./sounds/c.ogg")
-wrong = pygame.mixer.Sound("./sounds/wrong.ogg")
-emp = pygame.mixer.Sound("./sounds/empty.ogg")
 
 
 
@@ -66,11 +57,14 @@ column_f = ['-','-','-','-','-','x','x','-','-','x','x','-','-','-','-','-','-',
 # time_s = ['2.3','2.6','7.20','7.60','10.4','10.8''13.60','14.0','15.2','15.6','20','20.4']
 # time_d = ['2.90','3.3','4.43''6.40','6.80','9.60','10.0''12.80','13.20','16','16.4','17.6''19.2','19.6']
 # time_f = ['3.66','4.04','5.10','5.5','8.80','9.2','12.0','12.40''16.8','17.2','18.4','18.8']
-note_a = [c,d,d,c]
-note_s = [c,c,d,d,e,e,e,e,c,c,d,d]
-note_d = [g,g,g,e,e,f,f,f,f,g,g,g,e,e]
-note_f = [a,a,f,f,g,g,g,g,a,a,f,f]
+note_a = ['c','d','d','c']
+note_s = ['c','c','d','d','e','e','e','e','c','c','d','d']
+note_d = ['g','g','g','e','e','f','f','f','f','g','g','g','e','e']
+note_f = ['a','a','f','f','g','g','g','g','a','a','f','f']
 
+
+
+ 
 def beatmap():
     buttons_a = []
     buttons_s = []
@@ -150,26 +144,24 @@ def show_buttons(bm):
 
 
 
-def draw_text(surf,text,size,x,y):
-    font = pygame.font.Font('Fipps-Regular.otf',size)
-    text_surface = font.render(text,True, (86,35,255))
-    text_rect = text_surface.get_rect()
-    text_rect.midtop = (x,y)
-    screen.blit(text_surface,text_rect)
 
-
-
-
-
-
-
-pygame.event.wait()
+# pygame.mixer.init()
+# first_song = pygame.mixer.music.load("tt_lit.ogg")
+# pygame.mixer.music.play()
+# pygame.event.wait()
 # start = time.time()
-score_med = 30
-score_easy = 70
-score_hard = 10
-score = 0
+score_range = 100
 while not done:
+    # end = time.time()
+    # elapsed = end-start
+    # presstime_a = abs(elapsed-float(time_a[0])-.18)
+    # presstime_s = abs(elapsed-float(time_s[0])-.18)
+    # presstime_d = abs(elapsed-float(time_d[0])-.18)
+    # presstime_f = abs(elapsed-float(time_f[0])-.18)
+    # window_a = abs(bm[0][0].loc[1]- 700)
+    # window_s = abs(bm[1][0].loc[1]- 700)
+    # window_d = abs(bm[2][0].loc[1]- 700)
+    # window_f = abs(bm[3][0].loc[1]- 700)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -180,21 +172,12 @@ while not done:
                     while not type(bm[0][0]) == Button:
                         bm[0] = bm[0][1:]
                     window_a = abs(bm[0][0].loc[1]- 700)
-                    if window_a < score_hard:
-                        note_a[0].play()
-                        score += 50
-                    elif window_a < score_med:
-                        note_a[0].play()
-                        score += 10
-                        
-                    elif window_a < score_easy:
-                        note_a[0].play()
-                        score += 1
+                    if window_a < score_range:
+                        print('yes')
+                        a.play()
                     else:
-                        wrong.play()
-                    note_a = note_a[1:]
-
-                    
+                        pass
+                        #play wrong note
                     bm[0][0].is_visible = False
                     bm[0] = bm[0][1:]
 
@@ -204,20 +187,12 @@ while not done:
                     while not type(bm[1][0]) == Button:
                         bm[1]=bm[1][1:]
                     window_s = abs(bm[1][0].loc[1]- 700)
-                    if window_s < score_hard:
-                        note_s[0].play()
-                        score += 50
-                    elif window_s < score_med:
-                        note_s[0].play()
-                        score += 10
-                        
-                    elif window_s < score_easy:
-                        note_s[0].play()
-                        score += 1
+                    if window_s < score_range:
+                        print('yes')
+                        #play music
                     else:
-                        wrong.play()
-                    note_s = note_s[1:]
-
+                        pass
+                        #play wrong note
                     bm[1][0].is_visible = False
                     bm[1]=bm[1][1:]
 
@@ -227,19 +202,8 @@ while not done:
                     while not type(bm[2][0]) == Button:
                         bm[2] = bm[2][1:]
                     window_d = abs(bm[2][0].loc[1]- 700)
-                    if window_d < score_hard:
-                        note_d[0].play()
-                        score += 50
-                    elif window_d < score_med:
-                        note_d[0].play()
-                        score += 10
-                        
-                    elif window_d < score_easy:
-                        note_d[0].play()
-                        score += 1
-                    else:
-                        wrong.play()
-                    note_f = note_d[1:]
+                    if window_d < score_range:
+                        print('yes')
                     bm[2][0].is_visible = False
                     bm[2] = bm[2][1:]
 
@@ -250,22 +214,11 @@ while not done:
                     while not type(bm[3][0]) == Button:
                         bm[3] = bm[3][1:]
                     window_f = abs(bm[3][0].loc[1]- 700)
-                    if window_f < score_hard:
-                        note_f[0].play()
-                        score += 50
-                    elif window_f < score_med:
-                        note_f[0].play()
-                        score += 10
-                        
-                    elif window_f < score_easy:
-                        note_f[0].play()
-                        score += 1
-                    else:
-                        wrong.play()
-                    note_f = note_f[1:]
+                    if window_s < score_range:
+                        print('yes')
                     bm[3][0].is_visible = False
                     bm[3] = bm[3][1:]
-    pygame.display.set_caption('Rhythm Galaxy')      
+            
     screen.blit(background_image,back_pos )
 
 
@@ -274,7 +227,4 @@ while not done:
 
     show_buttons(bm)
  
-    draw_text(screen, str(score), 18, WIDTH/2, 900)
-
     pygame.display.flip()
-
