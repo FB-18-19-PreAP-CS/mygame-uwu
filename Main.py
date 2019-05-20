@@ -17,7 +17,7 @@ emp = pygame.mixer.Sound("./sounds/empty.ogg")
 
 pygame.init()
 screenRefresh = True
-background_image = pygame.image.load("plain_bg.jpg")
+background_image = pygame.image.load("space_bg_p.png")
 back_pos = [0,0]
 
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
