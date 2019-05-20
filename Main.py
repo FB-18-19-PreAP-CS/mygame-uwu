@@ -1,5 +1,6 @@
 import pygame
 import time 
+import random
 # import pygame_functions
 WIDTH = 1000
 HEIGHT = 1000
@@ -11,15 +12,15 @@ e = pygame.mixer.Sound("./sounds/e.ogg")
 d = pygame.mixer.Sound("./sounds/d.ogg")
 c = pygame.mixer.Sound("./sounds/c.ogg")
 wrong = pygame.mixer.Sound("./sounds/wrong.ogg")
-emp = pygame.mixer.Sound("./sounds/empty.ogg")
+
 
 
 
 pygame.init()
 screenRefresh = True
-background_image = pygame.image.load("space_bg_p.png")
-back_pos = [0,0]
 
+back_pos = [0,0]
+countscreen = pygame.display.set_mode((WIDTH,HEIGHT))
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 done = False
 
@@ -77,7 +78,7 @@ def beatmap():
     buttons_d = []
     buttons_f = []
     row = 0
-    spacing = 130
+    spacing = 70
     for space_a,space_s,space_d,space_f in zip(column_a,column_s,column_d,column_f):
 
         if space_a == "-":
@@ -152,7 +153,7 @@ def show_buttons(bm):
 
 def draw_text(surf,text,size,x,y):
     font = pygame.font.Font('Fipps-Regular.otf',size)
-    text_surface = font.render(text,True, (86,35,255))
+    text_surface = font.render(text,True, (255,255,255))
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x,y)
     screen.blit(text_surface,text_rect)
@@ -162,13 +163,34 @@ def draw_text(surf,text,size,x,y):
 
 
 
-
+done_count = False
 pygame.event.wait()
 # start = time.time()
 score_med = 30
 score_easy = 70
 score_hard = 10
 score = 0
+rclist = ["space_bg_b.png","space_bg_g.png","space_bg_p.png","space_bg_r.png"]
+background_image = pygame.image.load(random.choice(rclist))
+start = time.time()
+# while not done_count:
+#     end = time.time()
+#     elapsed = end-start
+#     for event in pygame.event.get():
+#         if event.type == pygame.QUIT:
+#             pygame.quit()
+#     countscreen.blit(background_image,back_pos )
+#     if elapsed > 5:
+#         pygame.quit()
+#     elif elapsed > 4:
+#         draw_text(countscreen, 'GO', 40, WIDTH/2, HEIGHT/2)
+#     elif elapsed > 3:
+#         draw_text(countscreen, '1', 40, WIDTH/2, HEIGHT/2)
+#     elif elapsed > 2:
+#         draw_text(countscreen, '2', 40, WIDTH/2, HEIGHT/2)
+#     elif elapsed > 1:
+#         draw_text(countscreen, '3', 40, WIDTH/2, HEIGHT/2)
+#     pygame.display.flip()
 while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -177,8 +199,12 @@ while not done:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
                 if not(len(bm[0]) == 0):
-                    while not type(bm[0][0]) == Button:
-                        bm[0] = bm[0][1:]
+                    try:
+                        while not type(bm[0][0]) == Button:
+                            bm[0] = bm[0][1:]
+                    except IndexError:
+                        break
+
                     window_a = abs(bm[0][0].loc[1]- 700)
                     if window_a < score_hard:
                         note_a[0].play()
@@ -196,13 +222,17 @@ while not done:
 
                     
                     bm[0][0].is_visible = False
-                    bm[0] = bm[0][1:]
+                 
+                    bm[0]=bm[0][1:]
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_s:
                 if not(len(bm[1]) == 0):
-                    while not type(bm[1][0]) == Button:
-                        bm[1]=bm[1][1:]
+                    try:
+                        while not type(bm[1][0]) == Button:
+                            bm[1] = bm[1][1:]
+                    except IndexError:
+                        break
                     window_s = abs(bm[1][0].loc[1]- 700)
                     if window_s < score_hard:
                         note_s[0].play()
@@ -217,15 +247,20 @@ while not done:
                     else:
                         wrong.play()
                     note_s = note_s[1:]
-
+                    
                     bm[1][0].is_visible = False
+                 
                     bm[1]=bm[1][1:]
+
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_d:
                 if not(len(bm[2]) == 0):
-                    while not type(bm[2][0]) == Button:
-                        bm[2] = bm[2][1:]
+                    try:
+                        while not type(bm[2][0]) == Button:
+                            bm[2] = bm[2][1:]
+                    except IndexError:
+                        break
                     window_d = abs(bm[2][0].loc[1]- 700)
                     if window_d < score_hard:
                         note_d[0].play()
@@ -239,16 +274,21 @@ while not done:
                         score += 1
                     else:
                         wrong.play()
-                    note_f = note_d[1:]
+                    note_d = note_d[1:]
                     bm[2][0].is_visible = False
-                    bm[2] = bm[2][1:]
+          
+                    bm[2]=bm[2][1:]
+              
 
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_f:
                 if not(len(bm[3]) == 0):
-                    while not type(bm[3][0]) == Button:
-                        bm[3] = bm[3][1:]
+                    try:
+                        while not type(bm[3][0]) == Button:
+                            bm[3] = bm[3][1:]
+                    except IndexError:
+                        break
                     window_f = abs(bm[3][0].loc[1]- 700)
                     if window_f < score_hard:
                         note_f[0].play()
@@ -264,7 +304,9 @@ while not done:
                         wrong.play()
                     note_f = note_f[1:]
                     bm[3][0].is_visible = False
-                    bm[3] = bm[3][1:]
+          
+                    bm[3]=bm[3][1:]
+
     pygame.display.set_caption('Rhythm Galaxy')      
     screen.blit(background_image,back_pos )
 
@@ -274,7 +316,7 @@ while not done:
 
     show_buttons(bm)
  
-    draw_text(screen, str(score), 18, WIDTH/2, 900)
+    draw_text(screen, str(score), 30, WIDTH/2, 900)
 
     pygame.display.flip()
 
