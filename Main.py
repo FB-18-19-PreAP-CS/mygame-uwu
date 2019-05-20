@@ -78,7 +78,7 @@ def beatmap():
     buttons_d = []
     buttons_f = []
     row = 0
-    spacing = 70
+    spacing = 130
     for space_a,space_s,space_d,space_f in zip(column_a,column_s,column_d,column_f):
 
         if space_a == "-":
