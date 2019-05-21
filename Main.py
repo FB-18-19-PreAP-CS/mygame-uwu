@@ -56,17 +56,14 @@ class Target():
     
 
 
-#CREATES INITIAL COLUMNS OF FALLING BUTTONS
 
 
+#used to create beatmap
 column_a = ['-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','x','-','-','-','-','-','-','-','x','-','-','-','-','-','-','-','-','x','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','x']
 column_s = ['-','x','x','-','-','-','-','-','-','-','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','-','x','x','-','-','x','x','-','-','-','-','-','-','-','-','-','-','x','x','-']
 column_d = ['-','-','-','x','x','-','-','x','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','x','-','-','-','x','x','-','-','-']
 column_f = ['-','-','-','-','-','x','x','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','x','x','-','-','-','-','-','-','-','-','-','-','-','x','x','-','-','x','x','-','-','-','-','-']
-# time_a = ['8.00','11.2','14.40','20.8']
-# time_s = ['2.3','2.6','7.20','7.60','10.4','10.8''13.60','14.0','15.2','15.6','20','20.4']
-# time_d = ['2.90','3.3','4.43''6.40','6.80','9.60','10.0''12.80','13.20','16','16.4','17.6''19.2','19.6']
-# time_f = ['3.66','4.04','5.10','5.5','8.80','9.2','12.0','12.40''16.8','17.2','18.4','18.8']
+#used to play sounds
 note_a = [c,d,d,c]
 note_s = [c,c,d,d,e,e,e,e,c,c,d,d]
 note_d = [g,g,g,e,e,f,f,f,f,g,g,g,e,e]
@@ -129,23 +126,16 @@ def beatmap():
 bm = beatmap()
 def show_buttons(bm):
     
-   
     for ele in bm[0]:
-
-        
         ele.blitme()
         ele.move_y()
-
     for ele in bm[1]:
-        
         ele.blitme()
         ele.move_y()
     for ele in bm[2]:
-        
         ele.blitme()
         ele.move_y()
     for ele in bm[3]:
-        
         ele.blitme()
         ele.move_y()
 
@@ -157,10 +147,6 @@ def draw_text(surf,text,size,x,y):
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x,y)
     screen.blit(text_surface,text_rect)
-
-
-
-
 
 
 done_count = False
@@ -185,10 +171,6 @@ def count():
             time.sleep(.5)
         if i == -1:
             draw_text(screen, '', 40, WIDTH/2, HEIGHT/2)
-        
-
-            
-
         time.sleep(1)
         pygame.display.flip()
 
@@ -206,6 +188,7 @@ while not done:
             if event.key == pygame.K_a:
                 if not(len(bm[0]) == 0):
                     try:
+                        #deal only with buttons
                         while not type(bm[0][0]) == Button:
                             bm[0] = bm[0][1:]
                     except IndexError:
@@ -225,8 +208,6 @@ while not done:
                     else:
                         wrong.play()
                     note_a = note_a[1:]
-
-                    
                     bm[0][0].is_visible = False
                  
                     bm[0]=bm[0][1:]
