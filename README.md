@@ -3,7 +3,7 @@
 ## The Game Manual
 
 ### :star:Setting
-  - Play entertaining songs to gather points and become the best player in the galaxy! 
+  - Play an entertaining song to gather points and become the best player in the galaxy! 
   
 ### :star:Gameplay
 ### :gem:How to Play:
@@ -27,3 +27,7 @@
 
 ### :gem:End:
   - The game ends when the song is finished.
+
+### :gem: Different Backgrounds:
+
+![collage](https://github.com/FB-18-19-PreAP-CS/mygame-uwu/blob/master/collage.jpg?raw=true)
