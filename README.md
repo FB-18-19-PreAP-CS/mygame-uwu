@@ -28,4 +28,4 @@
   - Get the highest score and compete with friends! 
 
 #### :gem:End:
-  - The game ends when the song you have selected is finished.
+  - The game ends when the song is finished.
