@@ -32,6 +32,7 @@ solin4 = [b3,g3,g3,f3]
 
 bass1 = [a2,a2,g2,g2]
 bass2 = [g2,e2,e2,f2]
+
 #plays notes
 for note,b in zip(solin,bass1):
     note.play()
