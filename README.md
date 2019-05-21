@@ -9,12 +9,6 @@
 #### :gem:How to Play:
   - Use a,s,d, and f keys to play the notes on time with the target
   
-####    :gem:Button:
- ![button image](https://github.com/FB-18-19-PreAP-CS/mygame-uwu/blob/master/blue_button-1-1.png.png) 
- 
-#### :gem:Target:
- ![target image](https://github.com/FB-18-19-PreAP-CS/mygame-uwu/blob/master/target-1.png?raw=true)
-  
   - the score is caculated by the player’s accuracy with the beat and target.
   - For example, the closer the notes are to the middle of the target, the more points the player gets.
     - harder range = +50 pts
